@@ -106,6 +106,31 @@ module pcb_corner_supports() {
 }
 
 // ============================================
+// CLIP RECESSES
+// ============================================
+module clip_recesses() {
+    recess_width = clip_width + clip_tolerance;
+    recess_height = clip_height;
+    recess_depth = clip_hook_depth + clip_tolerance;
+
+    // Z position: top of wall minus offset minus height
+    recess_z = tray_height - clip_recess_z_from_top - recess_height;
+
+    // X positions: centered on shared clip center points
+    for (cx = [clip_center_x1, clip_center_x2]) {
+        x_pos = cx - recess_width / 2;
+
+        // Left wall (Y=0): recess on inner face
+        translate([x_pos, wall_thickness - recess_depth, recess_z])
+            cube([recess_width, recess_depth, recess_height]);
+
+        // Right wall (Y=max): recess on inner face
+        translate([x_pos, outer_width - wall_thickness, recess_z])
+            cube([recess_width, recess_depth, recess_height]);
+    }
+}
+
+// ============================================
 // TRAY MODULE
 // ============================================
 module tray() {
@@ -124,7 +149,8 @@ module tray() {
             // PCB corner supports
             pcb_corner_supports();
         }
-        // (clip recesses subtracted in Task 3)
+        // Clip recess cutouts
+        clip_recesses();
     }
 }
 
