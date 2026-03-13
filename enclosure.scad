@@ -181,23 +181,43 @@ module lid_clip_hooks() {
 }
 
 // ============================================
+// VENTILATION GRILLE
+// ============================================
+module ventilation_grille() {
+    // Grille position on lid (relative to lid origin = tray outer origin)
+    grille_x = wall_thickness + vent_x_offset;
+    grille_y = wall_thickness + vent_y_offset;
+
+    // Create through-cut slots, centered within grille area
+    for (i = [0 : num_slots - 1]) {
+        slot_x = grille_x + vent_start_offset + i * (slot_width + bridge_width);
+        translate([slot_x, grille_y, -1])
+            cube([slot_width, vent_width, lid_thickness + 2]);
+    }
+}
+
+// ============================================
 // LID MODULE
 // ============================================
 module lid() {
-    union() {
-        // Lid plate
-        cube([outer_length, outer_width, lid_thickness]);
+    difference() {
+        union() {
+            // Lid plate
+            cube([outer_length, outer_width, lid_thickness]);
 
-        // Inner lip — left side (Y=0)
-        translate([wall_thickness, wall_thickness, -lid_lip_depth])
-            cube([inner_length, lid_lip_thickness, lid_lip_depth]);
+            // Inner lip — left side (Y=0)
+            translate([wall_thickness, wall_thickness, -lid_lip_depth])
+                cube([inner_length, lid_lip_thickness, lid_lip_depth]);
 
-        // Inner lip — right side (Y=max)
-        translate([wall_thickness, outer_width - wall_thickness - lid_lip_thickness, -lid_lip_depth])
-            cube([inner_length, lid_lip_thickness, lid_lip_depth]);
+            // Inner lip — right side (Y=max)
+            translate([wall_thickness, outer_width - wall_thickness - lid_lip_thickness, -lid_lip_depth])
+                cube([inner_length, lid_lip_thickness, lid_lip_depth]);
 
-        // Clip hooks on inner lips
-        lid_clip_hooks();
+            // Clip hooks on inner lips
+            lid_clip_hooks();
+        }
+        // Ventilation cutouts
+        ventilation_grille();
     }
 }
 
