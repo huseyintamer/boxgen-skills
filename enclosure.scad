@@ -61,6 +61,51 @@ support_size = 5;          // footprint of each L-support along X and Y
 print_gap = 10;  // gap between parts in print layout
 
 // ============================================
+// PCB CORNER SUPPORTS
+// ============================================
+
+// Single L-shaped corner support — models front-left corner
+// Grip walls face +X and +Y (inward toward PCB center)
+// Origin: outer corner of the support footprint
+module corner_support() {
+    // Ledge (shelf under PCB)
+    cube([support_size, support_size, standoff_height]);
+    // Grip wall along Y (faces +X, grips PCB X-edge)
+    cube([support_ledge_width, support_size, standoff_height + support_wall_height]);
+    // Grip wall along X (faces +Y, grips PCB Y-edge)
+    cube([support_size, support_ledge_width, standoff_height + support_wall_height]);
+}
+
+module pcb_corner_supports() {
+    // PCB cavity origin: (wall_thickness, wall_thickness)
+    // Supports inset from open faces by support_inset
+    x_inner_min = wall_thickness + support_inset;
+    x_inner_max = wall_thickness + inner_length - support_inset;
+    y_inner_min = wall_thickness;
+    y_inner_max = wall_thickness + inner_width;
+
+    // Front-left: grip walls face +X, +Y (default orientation)
+    translate([x_inner_min, y_inner_min, wall_thickness])
+        corner_support();
+
+    // Back-left: grip walls face -X, +Y (mirror on X)
+    translate([x_inner_max, y_inner_min, wall_thickness])
+        mirror([1, 0, 0])
+            corner_support();
+
+    // Front-right: grip walls face +X, -Y (mirror on Y)
+    translate([x_inner_min, y_inner_max, wall_thickness])
+        mirror([0, 1, 0])
+            corner_support();
+
+    // Back-right: grip walls face -X, -Y (mirror on X and Y)
+    translate([x_inner_max, y_inner_max, wall_thickness])
+        mirror([1, 0, 0])
+            mirror([0, 1, 0])
+                corner_support();
+}
+
+// ============================================
 // TRAY MODULE
 // ============================================
 module tray() {
@@ -76,7 +121,8 @@ module tray() {
             translate([0, outer_width - wall_thickness, 0])
                 cube([outer_length, wall_thickness, tray_height]);
 
-            // (corner supports added in Task 2)
+            // PCB corner supports
+            pcb_corner_supports();
         }
         // (clip recesses subtracted in Task 3)
     }
