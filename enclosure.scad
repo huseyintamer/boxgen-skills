@@ -221,5 +221,36 @@ module lid() {
     }
 }
 
-// Preview
-tray();
+// ============================================
+// PRINT LAYOUT
+// ============================================
+module print_layout() {
+    // Tray: as-is, base on print bed
+    tray();
+
+    // Lid: flipped upside down, placed next to tray
+    translate([outer_length + print_gap, 0, lid_thickness])
+        mirror([0, 0, 1])
+            lid();
+}
+
+// ============================================
+// ASSEMBLY PREVIEW
+// ============================================
+module assembly() {
+    tray();
+
+    // Lid on top of tray
+    translate([0, 0, tray_height])
+        lid();
+}
+
+// ============================================
+// RENDER MODE
+// ============================================
+// Uncomment ONE of the following:
+
+print_layout();    // For 3D printing (default)
+// assembly();     // For visual assembly check
+// tray();         // Tray only
+// lid();          // Lid only
