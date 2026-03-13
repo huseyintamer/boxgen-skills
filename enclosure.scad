@@ -154,5 +154,52 @@ module tray() {
     }
 }
 
+// ============================================
+// LID CLIP HOOKS
+// ============================================
+module lid_clip_hooks() {
+    hook_width = clip_width;
+    hook_height = clip_height;
+    hook_depth = clip_hook_depth;
+
+    // Z position: hook top at -clip_recess_z_from_top (1mm below lid plate bottom)
+    // hook bottom at -(clip_recess_z_from_top + clip_height) = -4
+    hook_z = -(clip_recess_z_from_top + clip_height);
+
+    // X positions: centered on shared clip center points
+    for (cx = [clip_center_x1, clip_center_x2]) {
+        x_pos = cx - hook_width / 2;
+
+        // Left lip hooks — face outward toward Y=0 (toward wall)
+        translate([x_pos, wall_thickness - hook_depth, hook_z])
+            cube([hook_width, hook_depth, hook_height]);
+
+        // Right lip hooks — face outward toward Y=max (toward wall)
+        translate([x_pos, outer_width - wall_thickness, hook_z])
+            cube([hook_width, hook_depth, hook_height]);
+    }
+}
+
+// ============================================
+// LID MODULE
+// ============================================
+module lid() {
+    union() {
+        // Lid plate
+        cube([outer_length, outer_width, lid_thickness]);
+
+        // Inner lip — left side (Y=0)
+        translate([wall_thickness, wall_thickness, -lid_lip_depth])
+            cube([inner_length, lid_lip_thickness, lid_lip_depth]);
+
+        // Inner lip — right side (Y=max)
+        translate([wall_thickness, outer_width - wall_thickness - lid_lip_thickness, -lid_lip_depth])
+            cube([inner_length, lid_lip_thickness, lid_lip_depth]);
+
+        // Clip hooks on inner lips
+        lid_clip_hooks();
+    }
+}
+
 // Preview
 tray();
