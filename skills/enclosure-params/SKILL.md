@@ -1,6 +1,7 @@
 ---
 name: enclosure-params
 description: Collect parameters for a 3D-printable electronics enclosure via interactive Q&A. Produces enclosure-spec.json.
+user-invocable: true
 ---
 
 # Enclosure Parameter Collection
@@ -206,4 +207,4 @@ After writing the JSON file:
 
 > "Parameters saved to `enclosure-spec.json`. Now generating the OpenSCAD code..."
 
-**REQUIRED:** Invoke the `enclosure-generate` skill using the Skill tool to continue the pipeline.
+**REQUIRED:** Invoke the `opencad-print:enclosure-generate` skill using the Skill tool to continue the pipeline.

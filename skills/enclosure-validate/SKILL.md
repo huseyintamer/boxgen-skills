@@ -1,6 +1,7 @@
 ---
 name: enclosure-validate
 description: Validate OpenSCAD code, fix errors iteratively, and export STL + PNG preview files.
+user-invocable: true
 ---
 
 # Enclosure Validator & Exporter
@@ -104,7 +105,7 @@ If OpenSCAD is available, verify bounding box dimensions:
 // Temporary bounding box check
 echo("BBOX_X", outer_length);
 echo("BBOX_Y", outer_width);
-echo("BBOX_Z", wall_thickness + tray_height + lid_thickness);  // Note: corrects spec formula which omits base plate thickness
+echo("BBOX_Z", wall_thickness + tray_height + lid_thickness);
 ```
 
 2. Run: `openscad -o /dev/null enclosure.scad 2>&1`

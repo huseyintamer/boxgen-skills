@@ -1,6 +1,7 @@
 ---
 name: enclosure-generate
 description: Generate parametric OpenSCAD enclosure code from enclosure-spec.json. Reads template references and produces enclosure.scad.
+user-invocable: true
 ---
 
 # Enclosure Code Generator
@@ -58,4 +59,4 @@ Write the generated code to `enclosure.scad` in the project root using the Write
 
 > "OpenSCAD code generated and saved to `enclosure.scad`. Now validating..."
 
-**REQUIRED:** Invoke the `enclosure-validate` skill using the Skill tool to continue the pipeline.
+**REQUIRED:** Invoke the `opencad-print:enclosure-validate` skill using the Skill tool to continue the pipeline.
