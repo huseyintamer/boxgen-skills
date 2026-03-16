@@ -1,8 +1,8 @@
-# OpenCAD Print
+# BoxGen Skills
 
-AI-powered 3D-printable enclosure generator for electronics projects. Built as a [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skill pipeline.
+Claude Code skills for generating 3D-printable electronics enclosures. Give it your PCB dimensions and get a parametric [OpenSCAD](https://openscad.org/) enclosure — ready for printing.
 
-Give it your PCB dimensions, answer a few questions, and get a print-ready enclosure — parametric [OpenSCAD](https://openscad.org/) source + STL + preview images.
+Answer 7 questions about your device and the skill pipeline generates a complete enclosure — `.scad` source + `.stl` + preview images.
 
 ![Isometric preview](enclosure-iso.png)
 
