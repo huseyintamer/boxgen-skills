@@ -207,4 +207,4 @@ After writing the JSON file:
 
 > "Parameters saved to `enclosure-spec.json`. Now generating the OpenSCAD code..."
 
-**REQUIRED:** Invoke the `opencad-print:enclosure-generate` skill using the Skill tool to continue the pipeline.
+**REQUIRED:** Invoke the `boxgen-skills:enclosure-generate` skill using the Skill tool to continue the pipeline.

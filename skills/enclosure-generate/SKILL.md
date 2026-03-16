@@ -59,4 +59,4 @@ Write the generated code to `enclosure.scad` in the project root using the Write
 
 > "OpenSCAD code generated and saved to `enclosure.scad`. Now validating..."
 
-**REQUIRED:** Invoke the `opencad-print:enclosure-validate` skill using the Skill tool to continue the pipeline.
+**REQUIRED:** Invoke the `boxgen-skills:enclosure-validate` skill using the Skill tool to continue the pipeline.

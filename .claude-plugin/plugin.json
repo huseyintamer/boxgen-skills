@@ -1,5 +1,5 @@
 {
-  "name": "opencad-print",
+  "name": "boxgen-skills",
   "description": "AI-powered 3D-printable enclosure generator for electronics. Interactive Q&A collects parameters, generates parametric OpenSCAD code, validates via CLI, and exports STL + PNG previews.",
   "version": "1.0.0",
   "author": {

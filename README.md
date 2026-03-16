@@ -9,14 +9,14 @@ Answer 7 questions about your device and the skill pipeline generates a complete
 ## Quick Start
 
 ```bash
-git clone https://github.com/huseyintamer/opencad-print.git
-claude --plugin-dir ./opencad-print
+git clone https://github.com/huseyintamer/boxgen-skills.git
+claude --plugin-dir ./boxgen-skills
 ```
 
 Then type:
 
 ```
-/opencad-print:enclosure-params
+/boxgen-skills:enclosure-params
 ```
 
 That's it. Answer 7 questions and the pipeline generates your enclosure automatically.
@@ -104,19 +104,19 @@ This repo includes a generated example: an enclosure for a small electronics boa
 ### As a plugin (recommended)
 
 ```bash
-git clone https://github.com/huseyintamer/opencad-print.git
-claude --plugin-dir ./opencad-print
+git clone https://github.com/huseyintamer/boxgen-skills.git
+claude --plugin-dir ./boxgen-skills
 ```
 
 ```
-/opencad-print:enclosure-params
+/boxgen-skills:enclosure-params
 ```
 
 ### Inside the repo
 
 ```bash
-git clone https://github.com/huseyintamer/opencad-print.git
-cd opencad-print
+git clone https://github.com/huseyintamer/boxgen-skills.git
+cd boxgen-skills
 claude
 ```
 
@@ -162,7 +162,7 @@ print_layout();    // Parts side-by-side for printing (default)
 ## Project Structure
 
 ```
-opencad-print/
+boxgen-skills/
 ├── .claude-plugin/
 │   └── plugin.json               # Plugin manifest
 ├── skills/
