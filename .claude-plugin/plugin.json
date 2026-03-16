@@ -4,5 +4,9 @@
   "version": "1.0.0",
   "author": {
     "name": "Huseyin Tamer"
-  }
+  },
+  "homepage": "https://github.com/huseyintamer/boxgen-skills",
+  "repository": "https://github.com/huseyintamer/boxgen-skills",
+  "license": "MIT",
+  "keywords": ["openscad", "3d-printing", "enclosure", "electronics", "parametric", "pcb"]
 }

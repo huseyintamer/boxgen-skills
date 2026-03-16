@@ -1,0 +1,20 @@
+{
+  "name": "boxgen-skills",
+  "owner": {
+    "name": "Huseyin Tamer",
+    "email": "huseyintamer@gmail.com"
+  },
+  "metadata": {
+    "description": "Claude Code skills for generating 3D-printable electronics enclosures from PCB dimensions"
+  },
+  "plugins": [
+    {
+      "name": "boxgen-skills",
+      "source": ".",
+      "description": "AI-powered 3D-printable enclosure generator for electronics. Answer 7 questions and get a parametric OpenSCAD enclosure — ready for printing.",
+      "version": "1.0.0",
+      "category": "hardware",
+      "tags": ["openscad", "3d-printing", "enclosure", "electronics", "parametric", "pcb"]
+    }
+  ]
+}
