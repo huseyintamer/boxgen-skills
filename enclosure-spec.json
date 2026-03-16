@@ -1,0 +1,36 @@
+{
+  "type": "tray-lid",
+  "device": {
+    "length": 18.0,
+    "width": 25.5,
+    "height": 3.1
+  },
+  "wall_thickness": 2,
+  "tolerance": 0.5,
+  "mounting": "corner-supports",
+  "open_faces": ["front", "back"],
+  "ventilation": {
+    "enabled": true,
+    "position": "top",
+    "length": 7.2,
+    "width": 10.2
+  },
+  "extras": {
+    "cable_hole": {
+      "enabled": true,
+      "diameter": 6,
+      "face": "left"
+    },
+    "label_area": {
+      "enabled": false,
+      "face": "top",
+      "length": 40,
+      "width": 20
+    },
+    "mounting_ear": {
+      "enabled": true,
+      "hole_diameter": 4,
+      "ear_width": 10
+    }
+  }
+}
